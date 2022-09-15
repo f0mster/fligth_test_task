@@ -1,0 +1,23 @@
+version: v1
+plugins:
+  - name: go
+    out: gen/golang
+    opt:
+      - paths=source_relative
+  - name: twirp
+    out: gen/golang
+    opt:
+      - paths=source_relative
+  - name: validate
+    out: gen/golang
+    opt:
+      - paths=source_relative
+      - lang=go
+  - name: openapiv2
+    out: gen/openapiv2
+    strategy: directory
+    opt:
+      - allow_merge=true
+      - merge_file_name=apidocs
+      - json_names_for_fields=false
+      - disable_default_errors=true

@@ -1,0 +1,30 @@
+run:
+  concurrency: 8
+  timeout: 4m
+  tests: true
+
+issues:
+  max-issues-per-linter: 0
+  max-same-issues: 0
+
+linters-settings:
+  errcheck:
+    check-blank: true
+  nestif:
+    min-complexity: 5
+  godot:
+    scope: all
+    capital: true
+  revive:
+    max-open-files: 2048
+    ignore-generated-header: true
+    severity: error
+    rules:
+      # https://github.com/mgechev/revive/blob/master/RULES_DESCRIPTIONS.md#var-naming
+      - name: var-naming
+        arguments:
+          - [ ] # AllowList
+          - [ "Sid", "sid" ] # DenyList
+
+linters:
+  enable-all: true

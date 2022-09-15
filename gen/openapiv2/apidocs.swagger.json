@@ -1,0 +1,81 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "proto/api.twirp.proto",
+    "version": "version not set"
+  },
+  "tags": [
+    {
+      "name": "FlightsFinder"
+    }
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/twirp/FlightsFinder/GetEndpoint": {
+      "post": {
+        "operationId": "FlightsFinder_GetEndpoint",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/filgthsGetEndpointResp"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/filgthsGetEndpointReq"
+            }
+          }
+        ],
+        "tags": [
+          "FlightsFinder"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "filgthsFlight": {
+      "type": "object",
+      "properties": {
+        "from": {
+          "type": "string"
+        },
+        "to": {
+          "type": "string"
+        }
+      }
+    },
+    "filgthsGetEndpointReq": {
+      "type": "object",
+      "properties": {
+        "flights": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/filgthsFlight"
+          }
+        }
+      }
+    },
+    "filgthsGetEndpointResp": {
+      "type": "object",
+      "properties": {
+        "from": {
+          "type": "string"
+        },
+        "to": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}
