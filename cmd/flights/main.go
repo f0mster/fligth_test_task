@@ -6,9 +6,9 @@ import (
 	"net/http"
 	"os"
 
-	"github.com/f0mster/flights/gen/golang/proto"
-	"github.com/f0mster/flights/internal/fligths/layers/domain"
-	"github.com/f0mster/flights/internal/fligths/layers/interfaces/requsets"
+	"github.com/f0mster/fligth_test_task/gen/golang/proto"
+	"github.com/f0mster/fligth_test_task/internal/fligths/layers/domain"
+	"github.com/f0mster/fligth_test_task/internal/fligths/layers/interfaces/requsets"
 )
 
 func main() {

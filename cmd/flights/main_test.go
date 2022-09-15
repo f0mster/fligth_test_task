@@ -10,7 +10,7 @@ import (
 
 	"github.com/stretchr/testify/require" //nolint:gci
 
-	"github.com/f0mster/flights/gen/golang/proto"
+	"github.com/f0mster/fligth_test_task/gen/golang/proto"
 )
 
 func Test_Main(t *testing.T) { //nolint:paralleltest

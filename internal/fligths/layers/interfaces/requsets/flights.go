@@ -4,8 +4,8 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/f0mster/flights/gen/golang/proto"
-	"github.com/f0mster/flights/internal/fligths/common/services"
+	"github.com/f0mster/fligth_test_task/gen/golang/proto"
+	"github.com/f0mster/fligth_test_task/internal/fligths/common/services"
 )
 
 type FlightsController struct {

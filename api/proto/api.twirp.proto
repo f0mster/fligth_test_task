@@ -1,12 +1,12 @@
 syntax = "proto3";
 
-package filgths;
+package fligths;
 
 import "google/api/annotations.proto";
 import "protoc-gen-openapiv2/options/annotations.proto";
 
 
-option go_package = "github.com/f0mster/flights/gen/proto";
+option go_package = "github.com/f0mster/fligth_test_task/gen/proto";
 
 service FlightsFinder {
     rpc GetEndpoint (GetEndpointReq) returns (GetEndpointResp) {

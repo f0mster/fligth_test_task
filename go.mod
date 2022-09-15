@@ -1,4 +1,4 @@
-module github.com/f0mster/flights
+module github.com/f0mster/fligth_test_task
 
 go 1.18
 

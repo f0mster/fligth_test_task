@@ -23,7 +23,7 @@
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/filgthsGetEndpointResp"
+              "$ref": "#/definitions/fligthsGetEndpointResp"
             }
           }
         },
@@ -33,7 +33,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/filgthsGetEndpointReq"
+              "$ref": "#/definitions/fligthsGetEndpointReq"
             }
           }
         ],
@@ -44,7 +44,7 @@
     }
   },
   "definitions": {
-    "filgthsFlight": {
+    "fligthsFlight": {
       "type": "object",
       "properties": {
         "from": {
@@ -55,18 +55,18 @@
         }
       }
     },
-    "filgthsGetEndpointReq": {
+    "fligthsGetEndpointReq": {
       "type": "object",
       "properties": {
         "flights": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/filgthsFlight"
+            "$ref": "#/definitions/fligthsFlight"
           }
         }
       }
     },
-    "filgthsGetEndpointResp": {
+    "fligthsGetEndpointResp": {
       "type": "object",
       "properties": {
         "from": {
