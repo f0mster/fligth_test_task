@@ -25,5 +25,6 @@ func (f *FlightsController) GetEndpoint(
 		err = fmt.Errorf("failed to calculate route: %w", err)
 		return nil, err
 	}
+
 	return resp, nil
 }
