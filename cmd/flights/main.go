@@ -7,7 +7,6 @@ import (
 	"os"
 
 	"github.com/f0mster/flights/gen/golang/proto"
-
 	"github.com/f0mster/flights/internal/fligths/layers/domain"
 	"github.com/f0mster/flights/internal/fligths/layers/interfaces/requsets"
 )
@@ -20,11 +19,14 @@ func main() {
 func parseFlags() string {
 	host := flag.String("host", "listen on host", "")
 	flag.Parse()
+
 	if *host == "" {
 		fmt.Println("host flag must be set")
 		os.Exit(1)
 	}
+
 	return *host
+
 }
 
 func startServer(host string) {
@@ -37,7 +39,9 @@ func startServer(host string) {
 	}
 	fmt.Println("starting server on " + host)
 	err := srv.ListenAndServe()
+
 	if err != nil {
+
 		fmt.Println("server stopped. error:", err)
 	}
 }

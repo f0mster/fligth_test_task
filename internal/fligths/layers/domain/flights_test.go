@@ -5,25 +5,25 @@ import (
 
 	"github.com/stretchr/testify/require"
 
-	go_api "github.com/f0mster/flights/gen/golang/proto"
+	"github.com/f0mster/flights/gen/golang/proto"
 )
 
 func TestFlights_CalculateEndpoints(t *testing.T) {
 	tests := []struct {
 		name string
-		req  *go_api.GetEndpointReq
-		resp *go_api.GetEndpointResp
+		req  *proto.GetEndpointReq
+		resp *proto.GetEndpointResp
 		err  error
 	}{
 		{
 			name: "positive. simple path",
-			req: &go_api.GetEndpointReq{Flights: []*go_api.Flight{
+			req: &proto.GetEndpointReq{Flights: []*proto.Flight{
 				{
 					From: "AAA",
 					To:   "BBB",
 				},
 			}},
-			resp: &go_api.GetEndpointResp{
+			resp: &proto.GetEndpointResp{
 				From: "AAA",
 				To:   "BBB",
 			},
@@ -31,7 +31,7 @@ func TestFlights_CalculateEndpoints(t *testing.T) {
 		},
 		{
 			name: "positive. harder path",
-			req: &go_api.GetEndpointReq{Flights: []*go_api.Flight{
+			req: &proto.GetEndpointReq{Flights: []*proto.Flight{
 				{
 					From: "AAA",
 					To:   "BBB",
@@ -41,7 +41,7 @@ func TestFlights_CalculateEndpoints(t *testing.T) {
 					To:   "CCC",
 				},
 			}},
-			resp: &go_api.GetEndpointResp{
+			resp: &proto.GetEndpointResp{
 				From: "AAA",
 				To:   "CCC",
 			},
@@ -49,7 +49,7 @@ func TestFlights_CalculateEndpoints(t *testing.T) {
 		},
 		{
 			name: "negative. double start points",
-			req: &go_api.GetEndpointReq{Flights: []*go_api.Flight{
+			req: &proto.GetEndpointReq{Flights: []*proto.Flight{
 				{
 					From: "AAA",
 					To:   "BBB",
@@ -68,7 +68,7 @@ func TestFlights_CalculateEndpoints(t *testing.T) {
 		},
 		{
 			name: "negative. split route in the middle",
-			req: &go_api.GetEndpointReq{Flights: []*go_api.Flight{
+			req: &proto.GetEndpointReq{Flights: []*proto.Flight{
 				{
 					From: "AAA",
 					To:   "BBB",
@@ -96,7 +96,7 @@ func TestFlights_CalculateEndpoints(t *testing.T) {
 
 		{
 			name: "negative. double end points",
-			req: &go_api.GetEndpointReq{Flights: []*go_api.Flight{
+			req: &proto.GetEndpointReq{Flights: []*proto.Flight{
 				{
 					From: "AAA",
 					To:   "BBB",
@@ -116,7 +116,7 @@ func TestFlights_CalculateEndpoints(t *testing.T) {
 
 		{
 			name: "negative. empty route",
-			req:  &go_api.GetEndpointReq{Flights: []*go_api.Flight{}},
+			req:  &proto.GetEndpointReq{Flights: []*proto.Flight{}},
 			resp: nil,
 			err:  ErrEmptyPath,
 		},
@@ -129,6 +129,7 @@ func TestFlights_CalculateEndpoints(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
+			t.Parallel()
 			f := &Flights{}
 			got, err := f.CalculateRoute(tt.req)
 			require.Equal(t, tt.err, err)

@@ -8,18 +8,23 @@ import (
 	"testing"
 	"time"
 
-	"github.com/stretchr/testify/require"
+	"github.com/stretchr/testify/require" //nolint:gci
 
 	"github.com/f0mster/flights/gen/golang/proto"
 )
 
-func Test_Main(t *testing.T) {
+func Test_Main(t *testing.T) { //nolint:paralleltest
 	freePort, err := GetFreePort()
 	require.NoError(t, err)
+
 	host := "localhost:" + strconv.Itoa(freePort)
+
 	go startServer(host)
+
 	time.Sleep(2 * time.Second)
+
 	cli := proto.NewFlightsFinderJSONClient("http://"+host, http.DefaultClient)
+
 	resp, err := cli.GetEndpoint(context.Background(), &proto.GetEndpointReq{Flights: []*proto.Flight{{
 		From: "AAA",
 		To:   "CCC",
@@ -42,5 +47,6 @@ func GetFreePort() (int, error) {
 		return 0, err
 	}
 	defer l.Close()
+
 	return l.Addr().(*net.TCPAddr).Port, nil
 }
